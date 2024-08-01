@@ -1,0 +1,74 @@
+
+  .waveWrapper {
+    overflow: hidden;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 550px; 
+    margin: auto;
+    z-index: 1;
+ 
+  }
+  
+  .waveWrapperInner {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+    background-image: linear-gradient(to top, #50a3a2 0%, #53e3a6 100%);
+  }
+  
+  .bgTop {
+    z-index: 15;
+    opacity: 0.5;
+  }
+  
+  .bgMiddle {
+    z-index: 10;
+    opacity: 0.75;
+  }
+  
+  .bgBottom {
+    z-index: 5;
+  }
+  
+  .wave {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-repeat: repeat no-repeat;
+    background-position: 0 bottom;
+    transform-origin: center bottom;
+  }
+  
+  .waveTop {
+    background-size: 50% 100px;
+  }
+  
+  .waveAnimation .waveTop {
+    animation: move_wave 3s linear infinite;
+  }
+  
+  .waveMiddle {
+    background-size: 50% 120px;
+  }
+  
+  .waveAnimation .waveMiddle {
+    animation: move_wave 10s linear infinite;
+  }
+  
+  .waveBottom {
+    background-size: 50% 100px;
+  }
+  
+  .waveAnimation .waveBottom {
+    animation: move_wave 15s linear infinite;
+  }
+  #scroll-dialog-title{
+    font-weight: 900;
+    font-size: xx-large;
+    margin-top: -50px;
+  }
