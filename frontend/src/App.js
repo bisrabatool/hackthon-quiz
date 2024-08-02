@@ -7,6 +7,7 @@ import Home from "./pages/home"
 import Feedback from "./pages/feedback"
 import StudentInfoPage from "./pages/studentinfo";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
+
       </Routes>
     </BrowserRouter>
    
