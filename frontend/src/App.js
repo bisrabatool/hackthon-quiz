@@ -17,7 +17,6 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
-
       </Routes>
     </BrowserRouter>
    
