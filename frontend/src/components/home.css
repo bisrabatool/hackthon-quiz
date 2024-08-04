@@ -1,0 +1,74 @@
+.homecontainer {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to top, #50a3a2, #53e3a6);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .homeheader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #50a3a2;
+  }
+  
+  .saylanilogo {
+    width: 150px;
+    margin-bottom: 20px;
+    animation: spin 5s linear infinite;
+  }
+  
+  /* @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+   */
+  .hometitle {
+    font-size: 2.25rem; /* equivalent to text-4xl */
+    font-weight: 700;   /* equivalent to font-bold */
+    color: #50a3a2;
+    margin-bottom: 1rem;
+  }
+  
+  .homedescription {
+    font-size: 1.125rem; /* equivalent to text-lg */
+    color: #4a5568;      /* equivalent to text-gray-700 */
+    margin-bottom: 2rem;
+  }
+  
+  .nameinput {
+    padding: 0.5rem 1rem;
+    border: 1px solid #d2d6dc;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    color:black;
+    max-width: 300px;
+  }
+  
+  .startbutton {
+    background-color: #50a3a2;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .startbutton:hover {
+    background-color: #41b98a;
+  }
+  
