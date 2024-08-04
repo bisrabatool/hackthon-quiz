@@ -40,7 +40,7 @@ export default function ScrollDialog({ title, content, children, buttonText }) {
         open={open}
         onClose={handleClose}
         scroll="paper"
-        aria-labelledby="scroll-dialog-title"
+        aria-labelledby="scroll-dialog-title" 
         aria-describedby="scroll-dialog-description"
       >
        
@@ -66,7 +66,7 @@ export default function ScrollDialog({ title, content, children, buttonText }) {
         </div>
 
         <DialogTitle
-        className='bg-gradient-to-r from-cyan-600 to-green-600 inline-block text-transparent bg-clip-text'  id="scroll-dialog-title" 
+        className='bg-gradient-to-r from-cyan-600 to-green-600 inline-block text-transparent bg-clip-text'  id="scroll-title" 
           sx={{
             display: 'flex',
             alignItems: 'center',

@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "axios"
 import "./register.css";
 import myImage from "../assets/smitlogo.png";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom"
 
 function Login() {
   
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,7 +25,7 @@ function Login() {
 
         localStorage.setItem("token", response.data.data);
 
-        // window.location.href = "/dashboard";
+        navigate("/dashboard");
       } else {
       
         alert(response.data.error || "Login failed!");

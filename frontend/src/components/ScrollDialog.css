@@ -1,4 +1,5 @@
 
+  
   .waveWrapper {
     overflow: hidden;
     position: relative;
@@ -67,7 +68,7 @@
   .waveAnimation .waveBottom {
     animation: move_wave 15s linear infinite;
   }
-  #scroll-dialog-title{
+  #scroll-title{
     font-weight: 900;
     font-size: xx-large;
     margin-top: -50px;

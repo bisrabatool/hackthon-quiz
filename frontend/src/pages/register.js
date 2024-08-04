@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./register.css";
 import myImage from "../assets/smitlogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
@@ -11,6 +11,8 @@ function Register() {
     password: "",
     confirmPassword: "",
   });
+
+  const navigate = useNavigate(); // Use useNavigate hook for navigation
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ function Register() {
           password: "",
           confirmPassword: "",
         });
-         window.location.href = "/login";
+        navigate("/login"); // Use navigate for routing
       } else {
         alert(`Error: ${response.data.message}`);
       }
