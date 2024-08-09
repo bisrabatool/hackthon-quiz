@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import Home from "./pages/home"
 import Feedback from "./pages/feedback"
 import StudentInfoPage from "./pages/studentinfo";
-
+import Test from "./pages/test"
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn")
@@ -22,7 +22,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
-
+       <Route path="/test" element={<Test/>}></Route>
+       <Route path="/studentdb" element={<Studentdb/>}></Route>
       </Routes>
     </BrowserRouter>
   );
