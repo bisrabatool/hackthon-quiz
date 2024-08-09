@@ -10,6 +10,7 @@ import QuizForm from "./pages/QuizForm";
 import QuizComponent from "./components/QuizComponent";
 import CourseModule from "./pages/CourseModule";
 import StdFeedback from "./pages/StdFeedback";
+import Forgetpassword from"./pages/forgot-password";
 
 
 function App() {
