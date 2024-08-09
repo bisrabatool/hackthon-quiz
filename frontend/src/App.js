@@ -1,4 +1,3 @@
-import "./App.css";
 import Dashboard from "./pages/dashboard";
 import Studentdb from "./pages/studentdb";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -9,17 +8,21 @@ import Feedback from "./pages/feedback"
 import StudentInfoPage from "./pages/studentinfo";
 import QuizForm from "./pages/QuizForm";
 import QuizComponent from "./components/QuizComponent";
-import CourseModule from "./pages/CourseModule"
-import StdFeedback from "./pages/StdFeedback"
+import CourseModule from "./pages/CourseModule";
+import StdFeedback from "./pages/StdFeedback";
 
 
 function App() {
+  const isLoggedIn = window.localStorage.getItem("loggedIn")
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Home />} />
+     
+        <Route path="/" element={isLoggedIn ===  "true" ? <Test/> : <Home/>} />
+        <Route path="/home" element={<Home/>}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgot-password" element={<Forgetpassword/>}></Route>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
