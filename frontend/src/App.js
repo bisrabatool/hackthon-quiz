@@ -7,6 +7,8 @@ import Login from "./pages/login";
 import Home from "./pages/home"
 import Feedback from "./pages/feedback"
 import StudentInfoPage from "./pages/studentinfo";
+import QuizForm from "./pages/QuizForm";
+import QuizComponent from "./components/QuizComponent";
 
 
 function App() {
@@ -19,6 +21,10 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
+        <Route path="/QuizForm" element={<QuizForm/>}></Route>
+        <Route path="/QuizComponent" element={<QuizComponent/>}></Route>
+        <Route path="/studentdb" element={<Studentdb/>}></Route>
+
 
       </Routes>
     </BrowserRouter>
