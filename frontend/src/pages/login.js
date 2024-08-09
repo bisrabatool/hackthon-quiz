@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import "./register.css";
 import myImage from "../assets/smitlogo.png";
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-   
       const response = await axios.post("http://localhost:5000/login", {
         email,
         password,
@@ -23,18 +22,22 @@ function Login() {
       if (response.data.status === "ok") {
         alert("Login successful!");
 
-        localStorage.setItem("token", response.data.data);
+        window.localStorage.setItem("token", response.data.data.token);
+        window.localStorage.setItem("loggedIn", true);
 
-        navigate("/dashboard");
-      } else {
       
+        const userType = response.data.data.userType;
+        if (userType === "Admin") {
+          navigate("/test");
+        } else if (userType === "User") {
+          navigate("/studentdb");
+        }
+      } else {
         alert(response.data.error || "Login failed!");
-        
       }
     } catch (error) {
       console.error("Login error:", error);
       alert("An error occurred during login. Please try again.");
-    
     }
   };
 
@@ -87,33 +90,33 @@ function Login() {
                   <div>
                     <input
                       type="checkbox"
-                      id="remember"
-                      className="input-feild"
+                      id="remember-me"
+                      className="mr-2 bg-transparent"
                     />
-                    <label
-                      className="ml-2 font-medium text-base text-white"
-                      htmlFor="remember"
-                    >
+                    <label htmlFor="remember-me" className="text-white">
                       Remember me
                     </label>
                   </div>
-                  <button className="font-medium text-base mx-4 text-green-800">
-                    Forgot password
-                  </button>
+                  <Link to="/forgot-password" className="font-medium text-base text-green-800 ms-3">
+                  Forgot password?
+                </Link>
                 </div>
-                <div className="mt-8 flex flex-col gap-y-4">
+                <div className="mt-4 flex flex-col gap-y-4">
                   <button
-                    type="submit"
                     className="Sign active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out transform py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold text-lg"
+                    type="submit"
                   >
                     Sign in
                   </button>
                 </div>
-                <div className="mt-3 flex justify-center items-center mb-3">
+                <div className="mt-3 flex justify-center items-center">
                   <p className="font-medium text-base text-white">
                     Don't have an account?
                   </p>
-                  <Link to="/register" className="ml-2 font-medium text-base text-green-800">
+                  <Link
+                    to="/register"
+                    className="ml-2 font-medium text-base text-green-800"
+                  >
                     Sign up
                   </Link>
                 </div>

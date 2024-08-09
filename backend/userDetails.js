@@ -16,6 +16,15 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    userType: {
+      type: String,
+      required: true,
+      enum: ["User", "Admin"], 
+    },
+    secretKey: {
+      type: String,
+      default: null,
+    },
   },
   {
     collection: "UserInfo",

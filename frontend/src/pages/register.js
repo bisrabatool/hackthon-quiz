@@ -9,18 +9,19 @@ function Register() {
     username: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    userType: "",
+    secretKey: "",
   });
 
-  const navigate = useNavigate(); // Use useNavigate hook for navigation
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { username, email, password, confirmPassword } = formData;
+    const { username, email, password, userType, secretKey } = formData;
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
+    if (userType === "Admin" && secretKey !== "SMITPORTAL") {
+      alert("Invalid secret key for Admin registration!");
       return;
     }
 
@@ -29,6 +30,7 @@ function Register() {
         name: username,
         email,
         password,
+        userType, 
       });
 
       if (response.data.status === "ok") {
@@ -37,9 +39,11 @@ function Register() {
           username: "",
           email: "",
           password: "",
-          confirmPassword: "",
+          userType: "",
+          secretKey: "",
         });
-        navigate("/login"); // Use navigate for routing
+
+        navigate("/login");
       } else {
         alert(`Error: ${response.data.message}`);
       }
@@ -62,11 +66,50 @@ function Register() {
       <div className="container">
         <div className="cover">
           <img className="logo" src={myImage} alt="Logo" />
-          <p className="welcome font-medium text-lg text-gray-500">
-            Welcome! Please enter your details.
-          </p>
+
           <div className="">
             <form className="form" onSubmit={handleSubmit}>
+              <p className="welcome font-medium text-lg text-gray-500 ">
+                <input
+                  type="radio"
+                  name="userType"
+                  onChange={handleChange}
+                  value="User"
+                />
+                <label htmlFor="" className="ms-1 me-4">
+                  User
+                </label>
+                <input
+                  type="radio"
+                  name="userType"
+                  onChange={handleChange}
+                  value="Admin"
+                />
+                <label htmlFor="" className="ms-1">
+                  Admin
+                </label>
+              </p>
+
+              {formData.userType === "Admin" ? (
+                <div className="flex flex-col mt-3">
+                  <label
+                    className="text-lg font-medium text-white"
+                    htmlFor="secretKey"
+                  >
+                    Secret Key
+                  </label>
+                  <input
+                    name="secretKey"
+                    onChange={handleChange}
+                    value={formData.secretKey}
+                    className="input-field w-full border-2 border-gray-100 rounded-lg p-2 bg-transparent"
+                    placeholder="Enter Secret Key"
+                    type="text"
+                    required
+                  />
+                </div>
+              ) : null}
+
               <div className="flex flex-col">
                 <label
                   className="text-lg font-medium mt-3 text-white"
@@ -83,6 +126,7 @@ function Register() {
                   required
                 />
               </div>
+
               <div className="flex flex-col">
                 <label
                   className="text-lg font-medium mt-3 text-white"
@@ -100,6 +144,7 @@ function Register() {
                   required
                 />
               </div>
+
               <div className="flex flex-col mt-3">
                 <label
                   className="text-lg font-medium text-white"
@@ -117,23 +162,7 @@ function Register() {
                   required
                 />
               </div>
-              <div className="flex flex-col mt-3">
-                <label
-                  className="text-lg font-medium text-white"
-                  htmlFor="confirmPassword"
-                >
-                  Confirm Password
-                </label>
-                <input
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                  className="input-field w-full border-2 border-gray-100 rounded-lg p-2 bg-transparent"
-                  placeholder="Confirm your password"
-                  type="password"
-                  required
-                />
-              </div>
+
               <div className="mt-8 flex flex-col gap-y-4">
                 <button
                   className="Sign active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out transform py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold text-lg"
@@ -142,6 +171,7 @@ function Register() {
                   Sign up
                 </button>
               </div>
+
               <div className="mt-3 flex justify-center items-center">
                 <p className="font-medium text-base text-white">
                   Already have an account?
