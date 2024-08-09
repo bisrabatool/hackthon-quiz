@@ -9,6 +9,8 @@ import Feedback from "./pages/feedback"
 import StudentInfoPage from "./pages/studentinfo";
 import QuizForm from "./pages/QuizForm";
 import QuizComponent from "./components/QuizComponent";
+import CourseModule from "./pages/CourseModule"
+import StdFeedback from "./pages/StdFeedback"
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
         <Route path="/QuizForm" element={<QuizForm/>}></Route>
         <Route path="/QuizComponent" element={<QuizComponent/>}></Route>
         <Route path="/studentdb" element={<Studentdb/>}></Route>
+        <Route path="/CourseModule" element={<CourseModule/>}></Route>
+        <Route path="/StdFeedback" element={<StdFeedback/>}></Route>
 
 
       </Routes>
