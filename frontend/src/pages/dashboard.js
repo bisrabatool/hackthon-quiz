@@ -1,10 +1,13 @@
 import React from 'react';
 import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Paper } from '@mui/material';
 import { PeopleAlt, TaskAlt, Feedback, Grade } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
 function Dashboard() {
+  const navigate = useNavigate(); // Initialize the navigate function
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -17,7 +20,7 @@ function Dashboard() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-             Admin Dashboard
+            Admin Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -40,12 +43,17 @@ function Dashboard() {
                   '&:hover': {
                     background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
                     color: 'white',
-                    // fontSize:'30px',
                     '& .MuiListItemIcon-root': {
                       color: 'white',
-
                     },
                   },
+                }}
+                onClick={() => {
+                  if (text === 'Student Info') {
+                    navigate('/StudentInfo'); // Navigate to the Student Info page
+                  } else if (text === 'Quiz category') {
+                    navigate('/QuizForm');
+                  }
                 }}
               >
                 <ListItemIcon>
@@ -62,7 +70,7 @@ function Dashboard() {
       </Drawer>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3,  height:800, width:800}}
       >
         <Toolbar />
         <Typography paragraph>
@@ -72,16 +80,23 @@ function Dashboard() {
           {['STUDENT', 'QUIZ', 'FEEDBACK', 'SCORE'].map((box, index) => (
             <Grid item xs={12} sm={6} md={6} lg={3} key={index}>
               <Paper
-                 sx={{
-                  padding: 2,
-                  textAlign: 'center',
-                  color: 'white',
-                  fontSize:'20px',
-                  background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
-                  height: 150, // Set a fixed height to make the boxes more square
+                sx={{
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  padding: 2,
+                  textAlign: 'center',
+                  color: 'white',
+                  fontSize: '20px',
+                  background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
+                  height: '100%',
+                  minHeight: 150,
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  if (box === 'QUIZ') {
+                    navigate('/QuizForm');
+                  }
                 }}
               >
                 {box}
@@ -95,6 +110,15 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+
+
+
+
+
+
+
+
 
 
 

@@ -16,7 +16,7 @@ const [students, setStudents] = useState([
       display: 'flex',
        justifyContent: 'center',
         alignItems: 'center',
-       background: 'linear-gradient(to right, #00C9FF, #92FE9D)',
+      //  background: 'linear-gradient(to right, #00C9FF, #92FE9D)',
      }}
     >
       <Container maxWidth="md">
