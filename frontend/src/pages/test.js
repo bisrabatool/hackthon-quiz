@@ -1,30 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../components/Slider';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import myImage from "../assets/smitlogo.png";
-
+import AddCourse from '../components/AddCourse';
 
 const DashboardPage = () => {
-  const menuItems = {
-    main: [
-      { icon: <DashboardIcon />, text: 'Student Info', onClick: () => console.log('Dashboard Clicked') },
-      { icon: <ShoppingCartIcon />, text: 'Quiz Category', onClick: () => console.log('Orders Clicked') },
-      { icon: <PeopleIcon />, text: 'Feedback', onClick: () => console.log('Customers Clicked') },
-      { icon: <BarChartIcon />, text: 'Score', onClick: () => console.log('Reports Clicked') },
-      
-    ],
-    secondary: [] // No secondary items (reports) to show
+  const [showAddCourse, setShowAddCourse] = useState(false);
+
+  const handleSidebarClick = (item) => {
+    if (item.text === 'Add Course') {
+      setShowAddCourse(true); 
+    } else {
+      console.log(`${item.text} Clicked`);
+    }
   };
 
   return (
     <Sidebar
       logo={myImage}
-      menuItems={menuItems}
-      showSubheader={false} // Do not show the subheader
-    />
+      menuItems={{
+        main: [
+          { icon: <DashboardIcon />, text: 'Home', onClick: () => console.log('Dashboard Clicked') },
+          { icon: <ShoppingCartIcon />, text: 'Add Course', onClick: () => handleSidebarClick({ text: 'Add Course' }) },
+          { icon: <PeopleIcon />, text: 'Create Quiz', onClick: () => console.log('Test Series Clicked') },
+          { icon: <BarChartIcon />, text: 'Progress', onClick: () => console.log('Dashboard Clicked') },
+        ]
+      }}
+    >  <div className='mt-5'>
+      {showAddCourse && <AddCourse />}
+      </div>
+    </Sidebar>
   );
 };
 
