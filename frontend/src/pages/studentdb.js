@@ -63,6 +63,9 @@ function Studentdb() {
                   if (text === 'Feedback') {
                     navigate('/StdFeedback'); // Navigate to the Feedback page
                   }
+                  else if (text === 'My Progress') {
+                    navigate('/StdProgress'); // Navigate to the Course Module page
+                  }
                   else if (text === 'Course Module') {
                     navigate('/CourseModule'); // Navigate to the Course Module page
                   }
@@ -107,6 +110,9 @@ function Studentdb() {
                 onClick={() => {
                   if (box === 'FEEDBACK') {
                     navigate('/StdFeedback');
+                  }
+                  else if (box === 'MY PROGRESS') {
+                    navigate('/StdProgress');
                   }
                   else if (box === 'COURSE MODULE') {
                     navigate('/CourseModule');

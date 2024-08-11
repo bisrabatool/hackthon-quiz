@@ -10,6 +10,7 @@ import QuizForm from "./pages/QuizForm";
 import QuizComponent from "./components/QuizComponent";
 import CourseModule from "./pages/CourseModule";
 import StdFeedback from "./pages/StdFeedback";
+import StdProgress from "./pages/StdProgress";
 import Forgetpassword from"./pages/forgot-password";
 
 
@@ -32,7 +33,7 @@ function App() {
         <Route path="/studentdb" element={<Studentdb/>}></Route>
         <Route path="/CourseModule" element={<CourseModule/>}></Route>
         <Route path="/StdFeedback" element={<StdFeedback/>}></Route>
-
+        <Route path="/StdProgress" element={<StdProgress/>}></Route>
 
       </Routes>
     </BrowserRouter>
