@@ -17,8 +17,6 @@ import ListItemText from '@mui/material/ListItemText';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import Container from '@mui/material/Container';
- // Import ListSubheader
 
 const drawerWidth = 240;
 
@@ -40,7 +38,6 @@ const AppBar = styled(MuiAppBar, {
     }),
   }),
 }));
-
 
 // Styled Drawer component
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -71,7 +68,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const defaultTheme = createTheme();
 
-const Sidebar = ({ logo, menuItems, showSubheader }) => {
+const Sidebar = ({ logo, menuItems, showSubheader, children }) => {
   const [open, setOpen] = React.useState(true); // State for drawer open/close
   const [anchorEl, setAnchorEl] = React.useState(null); // State for menu anchor
 
@@ -86,19 +83,16 @@ const Sidebar = ({ logo, menuItems, showSubheader }) => {
   };
 
   // Function to handle menu close
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
   const logOut = () => {
-    window.localStorage.clear()
-    window.location.href = "./login"
-  }
+    window.localStorage.clear();
+    window.location.href = "./login";
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: 'flex' }}>
         <AppBar position="absolute" open={open} sx={{
           background: "linear-gradient(to right, rgba(0, 172, 193, 0.8), rgba(67, 160, 71, 0.8))",
-        
         }}>
           <Toolbar sx={{ pr: '24px' }}>
             <IconButton
@@ -208,9 +202,8 @@ const Sidebar = ({ logo, menuItems, showSubheader }) => {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            {/* Main content goes here */}
-          </Container>
+          {/* Render children here */}
+          {children}
         </Box>
       </Box>
     </ThemeProvider>

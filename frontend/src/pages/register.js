@@ -165,7 +165,9 @@ function Register() {
 
               <div className="mt-8 flex flex-col gap-y-4">
                 <button
-                  className="Sign active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out transform py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold text-lg"
+                  className="Sign active:scale-[.98] active:duration-75 transition-all
+                   hover:scale-[1.01] ease-in-out transform py-2 rounded-xl 
+                   bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold text-lg"
                   type="submit"
                 >
                   Sign up

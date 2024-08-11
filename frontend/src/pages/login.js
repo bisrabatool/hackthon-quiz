@@ -30,7 +30,7 @@ function Login() {
         if (userType === "Admin") {
           navigate("/test");
         } else if (userType === "User") {
-          navigate("/studentdb");
+          navigate("/enrollment?showDialog=true");
         }
       } else {
         alert(response.data.error || "Login failed!");

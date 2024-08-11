@@ -6,7 +6,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const User = require("./userDetails");
+const Enrollment = require("./enrollmentDetails");
 const nodemailer = require("nodemailer");
+
 const app = express();
 
 app.use(cors());
@@ -88,10 +90,16 @@ app.post("/login", async (req, res) => {
     }
 
     if (await bcrypt.compare(password, user.password)) {
-      const token = jwt.sign({ userId: user._id, userType: user.userType }, JWT_SECRET, {
-        expiresIn: "1h",
-      });
-      return res.status(200).json({ status: "ok", data: { token, userType: user.userType } });
+      const token = jwt.sign(
+        { userId: user._id, userType: user.userType },
+        JWT_SECRET,
+        {
+          expiresIn: "1h",
+        }
+      );
+      return res
+        .status(200)
+        .json({ status: "ok", data: { token, userType: user.userType } });
     } else {
       return res
         .status(400)
@@ -104,7 +112,6 @@ app.post("/login", async (req, res) => {
       .json({ status: "error", message: "Internal server error" });
   }
 });
-
 
 // Forgot Password
 app.post("/forgot-password", async (req, res) => {
@@ -207,6 +214,39 @@ app.post("/reset-password/:id/:token", async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.json({ status: "error", message: "Something went wrong" });
+  }
+});
+
+// Enrollment
+app.post("/enroll", async (req, res) => {
+  try {
+    const { course, batch, teacher, gender, rollNumber } = req.body;
+
+    const existingStudent = await Enrollment.findOne({ rollNumber });
+    if (existingStudent) {
+      return res
+        .status(400)
+        .json({ status: "error", message: "Roll Number already exists." });
+    }
+
+    const newEnrollment = new Enrollment({
+      course,
+      batch,
+      teacher,
+      gender,
+      rollNumber,
+    });
+
+    await newEnrollment.save();
+    res.status(200).json({ status: "ok", message: "Enrollment successful!" });
+  } catch (error) {
+    console.error("Error during enrollment:", error);
+    res
+      .status(500)
+      .json({
+        status: "error",
+        message: "An error occurred during enrollment.",
+      });
   }
 });
 
