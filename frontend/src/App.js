@@ -10,6 +10,12 @@ import Test from "./pages/test"
 import QuizForm from "./pages/QuizForm"
 import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
+import QuizForm from "./pages/QuizForm";
+import QuizComponent from "./components/QuizComponent";
+import CourseModule from "./pages/CourseModule";
+import StdFeedback from "./pages/StdFeedback";
+import Forgetpassword from"./pages/forgot-password";
+
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn")
@@ -29,6 +35,13 @@ function App() {
         <Route path="/Quizform" element={<QuizForm/>}></Route>
         <Route path="/enrollment" element={<Enrollment/>}></Route>
         
+        <Route path="/QuizForm" element={<QuizForm/>}></Route>
+        <Route path="/QuizComponent" element={<QuizComponent/>}></Route>
+        <Route path="/studentdb" element={<Studentdb/>}></Route>
+        <Route path="/CourseModule" element={<CourseModule/>}></Route>
+        <Route path="/StdFeedback" element={<StdFeedback/>}></Route>
+
+
       </Routes>
     </BrowserRouter>
   );

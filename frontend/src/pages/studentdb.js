@@ -2,10 +2,13 @@ import React from 'react';
 import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Paper, Avatar, Divider, CircularProgress} from '@mui/material';
 import { TaskAlt, DonutLarge, ViewModule, Feedback } from '@mui/icons-material';
 import avatar from '../assets/avatar.jpg'; // Import the image
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
 function Studentdb() {
+  const navigate = useNavigate(); // Initialize the navigate function
+  
   // Example progress values for 5 quizzes
   const quizProgress = [80, 65, 90, 55, 70];
   return (
@@ -56,6 +59,14 @@ function Studentdb() {
                     },
                   },
                 }}
+                onClick={() => {
+                  if (text === 'Feedback') {
+                    navigate('/StdFeedback'); // Navigate to the Feedback page
+                  }
+                  else if (text === 'Course Module') {
+                    navigate('/CourseModule'); // Navigate to the Course Module page
+                  }
+                }}
               >
                 <ListItemIcon>
                   {index === 0 && <TaskAlt />}
@@ -71,7 +82,7 @@ function Studentdb() {
       </Drawer>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, height:800, width:800 }}
       >
         <Toolbar />
         <Typography paragraph>
@@ -91,6 +102,15 @@ function Studentdb() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  cursor: 'pointer',
+                }}
+                onClick={() => {
+                  if (box === 'FEEDBACK') {
+                    navigate('/StdFeedback');
+                  }
+                  else if (box === 'COURSE MODULE') {
+                    navigate('/CourseModule');
+                  }
                 }}
               >
                 {box}
