@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Paper, Avatar, Divider, CircularProgress} from '@mui/material';
+import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Paper, Avatar, Divider, CircularProgress } from '@mui/material';
 import { TaskAlt, DonutLarge, ViewModule, Feedback } from '@mui/icons-material';
 import avatar from '../assets/avatar.jpg'; // Import the image
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +8,7 @@ const drawerWidth = 240;
 
 function Studentdb() {
   const navigate = useNavigate(); // Initialize the navigate function
-  
+
   // Example progress values for 5 quizzes
   const quizProgress = [80, 65, 90, 55, 70];
   return (
@@ -23,7 +23,7 @@ function Studentdb() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-             Student Dashboard
+            Student Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -37,7 +37,7 @@ function Studentdb() {
       >
         <Toolbar />
         <Box sx={{ overflow: 'auto', padding: 2, display: 'flex', alignItems: 'center' }}>
-          <Avatar src={avatar} sx={{ width: 50, height: 50, margin: '2'}}></Avatar>
+          <Avatar src={avatar} sx={{ width: 50, height: 50, margin: '2' }}></Avatar>
           <Typography variant="h5">
             Noor Jehan
           </Typography>
@@ -63,6 +63,9 @@ function Studentdb() {
                   if (text === 'Feedback') {
                     navigate('/StdFeedback'); // Navigate to the Feedback page
                   }
+                  else if (text === 'My Progress') {
+                    navigate('/StdProgress'); // Navigate to the Course Module page
+                  }
                   else if (text === 'Course Module') {
                     navigate('/CourseModule'); // Navigate to the Course Module page
                   }
@@ -82,7 +85,7 @@ function Studentdb() {
       </Drawer>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, height:800, width:800 }}
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, height: 800, width: 800 }}
       >
         <Toolbar />
         <Typography paragraph>
@@ -92,11 +95,11 @@ function Studentdb() {
           {['QUIZ', 'MY PROGRESS', 'COURSE MODULE', 'FEEDBACK'].map((box, index) => (
             <Grid item xs={12} sm={6} md={6} lg={3} key={index}>
               <Paper
-                 sx={{
+                sx={{
                   padding: 2,
                   textAlign: 'center',
                   color: 'white',
-                  fontSize:'20px',
+                  fontSize: '20px',
                   background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
                   height: 150, // Set a fixed height to make the boxes more square
                   display: 'flex',
@@ -107,6 +110,9 @@ function Studentdb() {
                 onClick={() => {
                   if (box === 'FEEDBACK') {
                     navigate('/StdFeedback');
+                  }
+                  else if (box === 'MY PROGRESS') {
+                    navigate('/StdProgress');
                   }
                   else if (box === 'COURSE MODULE') {
                     navigate('/CourseModule');
@@ -122,6 +128,7 @@ function Studentdb() {
         <Grid container spacing={4} sx={{ mt: 4 }}>
           {/* Bar Chart */}
           <Grid item xs={12} md={6} lg={6}>
+            <Typography variant="h6">Your Overall Progress</Typography>
             <Paper sx={{ padding: 3, textAlign: 'center', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end', height: '100%', width: '100%', justifyContent: 'space-around' }}>
                 {quizProgress.map((progress, index) => (
@@ -148,8 +155,8 @@ function Studentdb() {
           </Grid>
           {/* Circular Progress */}
           <Grid item xs={12} md={6} lg={6}>
+            <Typography variant="h6">Your Current Progress</Typography>
             <Paper sx={{ padding: '4', textAlign: 'center', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-              <Typography variant="h6">Your Overall Progress</Typography>
               <CircularProgress variant="determinate" value={75} size={150} thickness={4} />
               <Typography variant="h6" sx={{ mt: 4 }}>75%</Typography>
             </Paper>
