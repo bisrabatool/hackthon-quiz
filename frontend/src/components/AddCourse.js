@@ -1,43 +1,53 @@
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography, List, IconButton, Collapse, Card } from '@mui/material';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Typography,
+  List,
+  IconButton,
+  Collapse,
+  Card
+} from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete'; // Import DeleteIcon
 import { styled } from '@mui/material/styles';
 
 
-const AddCourseButton = styled(Button)(({ theme }) => ({
-  marginBottom: theme.spacing(2),
-}));
+// Define styled components
 
-const CourseContainer = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(4),
-  padding: theme.spacing(2),
-  border: `1px solid ${theme.palette.divider}`,
-  borderRadius: theme.shape.borderRadius,
-  boxShadow: theme.shadows[2],
-  marginBottom: theme.spacing(3),
-}));
+const CourseContainer = styled(Box)({
+  border: '1px solid #ddd',
+  borderRadius: '8px',
+  padding: '16px',
+  marginBottom: '16px',
+});
 
-const CourseHeader = styled(Box)(({ theme }) => ({
+const CourseHeader = styled(Box)({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  marginBottom: theme.spacing(2),
-  padding: theme.spacing(1),
-  borderBottom: `1px solid ${theme.palette.divider}`,
-}));
+  marginBottom: '8px',
+});
 
-const BatchContainer = styled(Box)(({ theme }) => ({
-  marginBottom: theme.spacing(2),
-}));
+const BatchContainer = styled(Box)({
+  border: '1px solid #ddd',
+  borderRadius: '8px',
+  padding: '8px',
+  marginBottom: '8px',
+});
 
-const BatchHeader = styled(Box)(({ theme }) => ({
+const BatchHeader = styled(Box)({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  borderBottom: `1px solid ${theme.palette.divider}`,
-  padding: theme.spacing(1),
-}));
+  marginBottom: '4px',
+});
 
 const HorizontalRow = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -85,7 +95,7 @@ const CoursesManagement = () => {
   const handleAddBatch = () => {
     setCourses(courses.map(course =>
       course.name === currentCourse.name
-        ? { ...course, batches: [...course.batches, { name: newBatchName, students: []}] }
+        ? { ...course, batches: [...course.batches, { name: newBatchName, students: [] }] }
         : course
     ));
     setNewBatchName('');
@@ -125,6 +135,21 @@ const CoursesManagement = () => {
     ));
     setTeacherName('');
     setOpenAddTeacherDialog(false);
+  };
+
+  const handleDeleteStudent = (batchName, studentIndex) => {
+    setCourses(courses.map(course =>
+      course.name === currentCourse.name
+        ? {
+            ...course,
+            batches: course.batches.map(batch =>
+              batch.name === batchName
+                ? { ...batch, students: batch.students.filter((_, idx) => idx !== studentIndex) }
+                : batch
+            )
+          }
+        : course
+    ));
   };
 
   const CourseBox = ({ course }) => {
@@ -186,6 +211,9 @@ const CoursesManagement = () => {
                       <StudentCard key={idx}>
                         <StudentName variant="body1">{student.name}</StudentName>
                         <StudentRollNumber variant="body2">{student.rollNumber}</StudentRollNumber>
+                        <IconButton onClick={() => handleDeleteStudent(batch.name, idx)}>
+                          <DeleteIcon />
+                        </IconButton>
                       </StudentCard>
                     ))}
                     <Button variant="outlined" startIcon={<AddIcon />} onClick={() => setOpenAddStudentDialog(true)}>
@@ -214,9 +242,14 @@ const CoursesManagement = () => {
 
   return (
     <Box sx={{ padding: 2 }}>
-      <AddCourseButton variant="contained" color="primary" onClick={() => setOpenAddCourseDialog(true)}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setOpenAddCourseDialog(true)}
+        sx={{ marginBottom: 2 }}
+      >
         Add Course
-      </AddCourseButton>
+      </Button>
 
       {courses.map((course, i) => (
         <CourseBox key={i} course={course} />
