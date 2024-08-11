@@ -88,6 +88,7 @@ function StdProgress() {
                 <Grid container spacing={4} sx={{ mt: 4 }}>
                     {/* Bar Chart */}
                     <Grid item xs={12} md={6} lg={6}>
+                        <Typography variant="h6">Your Overall Progress</Typography>
                         <Paper sx={{ padding: 3, textAlign: 'center', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                             <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end', height: '100%', width: '100%', justifyContent: 'space-around' }}>
                                 {quizProgress.map((progress, index) => (
@@ -114,8 +115,8 @@ function StdProgress() {
                     </Grid>
                     {/* Circular Progress */}
                     <Grid item xs={12} md={6} lg={6}>
+                        <Typography variant="h6">Your Current Progress</Typography>
                         <Paper sx={{ padding: '4', textAlign: 'center', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                            <Typography variant="h6">Your Overall Progress</Typography>
                             <CircularProgress variant="determinate" value={75} size={150} thickness={4} />
                             <Typography variant="h6" sx={{ mt: 4 }}>75%</Typography>
                         </Paper>
