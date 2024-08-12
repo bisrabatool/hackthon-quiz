@@ -20,7 +20,6 @@ import Menu from '@mui/material/Menu';
 
 const drawerWidth = 240;
 
-// Styled AppBar component
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
@@ -39,7 +38,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
-// Styled Drawer component
+
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     '& .MuiDrawer-paper': {
@@ -69,20 +68,20 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const defaultTheme = createTheme();
 
 const Sidebar = ({ logo, menuItems, showSubheader, children }) => {
-  const [open, setOpen] = React.useState(true); // State for drawer open/close
-  const [anchorEl, setAnchorEl] = React.useState(null); // State for menu anchor
+  const [open, setOpen] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null); 
 
-  // Function to toggle drawer
+ 
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
-  // Function to handle menu open
+ 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  // Function to handle menu close
+ 
   const logOut = () => {
     window.localStorage.clear();
     window.location.href = "./login";
@@ -141,7 +140,7 @@ const Sidebar = ({ logo, menuItems, showSubheader, children }) => {
                 horizontal: 'right',
               }}
               open={Boolean(anchorEl)}
-              // onClose={handleClose}
+              
             >
               <MenuItem >Profile</MenuItem>
               <MenuItem onClick={logOut}>Logout</MenuItem>

@@ -10,8 +10,10 @@ body {
   align-items: center;
   height: 100vh;
   color: white;
+  color: rgba(240, 248, 255, 0.589);
   overflow: hidden; /* Prevent scrolling */
 }
+
 
 .quiz-container {
   /* background-color: rgba(127, 221, 117, 0.364); Slight transparency */
