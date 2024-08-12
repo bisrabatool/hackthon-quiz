@@ -10,11 +10,10 @@ import Test from "./pages/test"
 import QuizForm from "./pages/QuizForm"
 import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
-// import QuizForm from "./pages/QuizForm";
+import QuizForm from "./pages/QuizForm";
 import QuizComponent from "./components/QuizComponent";
 import CourseModule from "./pages/CourseModule";
 import StdFeedback from "./pages/StdFeedback";
-import StdProgress from "./pages/StdProgress";
 import Forgetpassword from"./pages/forgot-password";
 
 
@@ -23,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={isLoggedIn ===  "true" ? <Test/> : <Home/>} />
+        <Route path="/" element={isLoggedIn ===  "true" ? <Test/> : <Home/>}></Route >
         <Route path="/home" element={<Home/>}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
@@ -35,11 +34,13 @@ function App() {
         <Route path="/studentdb" element={<Studentdb/>}></Route>
         <Route path="/Quizform" element={<QuizForm/>}></Route>
         <Route path="/enrollment" element={<Enrollment/>}></Route>
-        {/* <Route path="/QuizForm" element={<QuizForm/>}></Route> */}
+        
+        <Route path="/QuizForm" element={<QuizForm/>}></Route>
         <Route path="/QuizComponent" element={<QuizComponent/>}></Route>
+        <Route path="/studentdb" element={<Studentdb/>}></Route>
         <Route path="/CourseModule" element={<CourseModule/>}></Route>
         <Route path="/StdFeedback" element={<StdFeedback/>}></Route>
-        <Route path="/StdProgress" element={<StdProgress/>}></Route>
+
 
       </Routes>
     </BrowserRouter>

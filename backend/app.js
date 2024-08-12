@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const User = require("./userDetails");
 const Enrollment = require("./enrollmentDetails");
+const Course = require("./courseDetails");
 const nodemailer = require("nodemailer");
 
 const app = express();
@@ -249,6 +250,9 @@ app.post("/enroll", async (req, res) => {
       });
   }
 });
+
+
+
 
 // Start server
 app.listen(5000, () => {
