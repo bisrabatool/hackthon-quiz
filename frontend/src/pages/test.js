@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Slider';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
+import HomeIcon from '@mui/icons-material/Home';
+import AddBoxIcon from '@mui/icons-material/AddBox'; // Or LibraryAddIcon
+import CreateIcon from '@mui/icons-material/Create'; // Or QuizIcon if available
+import BarChartIcon from '@mui/icons-material/BarChart'; // Or TimelineIcon
 import myImage from "../assets/smitlogo.png";
 import AddCourse from '../components/AddCourse';
+import CreateQuiz from '../components/CreateQuiz';
 
 const DashboardPage = () => {
-  const [showAddCourse, setShowAddCourse] = useState(false);
+  const [activeComponent, setActiveComponent] = useState(null);
 
   const handleSidebarClick = (item) => {
     if (item.text === 'Add Course') {
-      setShowAddCourse(true); 
+      setActiveComponent('AddCourse');
+    } else if (item.text === 'Create Quiz') {
+      setActiveComponent('CreateQuiz');
     } else {
       console.log(`${item.text} Clicked`);
     }
@@ -23,17 +26,20 @@ const DashboardPage = () => {
       logo={myImage}
       menuItems={{
         main: [
-          { icon: <DashboardIcon />, text: 'Home', onClick: () => console.log('Dashboard Clicked') },
-          { icon: <ShoppingCartIcon />, text: 'Add Course', onClick: () => handleSidebarClick({ text: 'Add Course' }) },
-          { icon: <PeopleIcon />, text: 'Create Quiz', onClick: () => console.log('Test Series Clicked') },
-          { icon: <BarChartIcon />, text: 'Progress', onClick: () => console.log('Dashboard Clicked') },
+          { icon: <HomeIcon  sx={{color: " rgba(8, 145, 178, 1)"}}/>, text: 'Home' , onClick: () => setActiveComponent(null) },
+          { icon: <AddBoxIcon sx={{color: " rgba(8, 145, 178, 1)"}}/>, text: 'Add Course', onClick: () => handleSidebarClick({ text: 'Add Course' }) },
+          { icon: <CreateIcon sx={{color: " rgba(8, 145, 178, 1)"}}/>, text: 'Create Quiz', onClick: () => handleSidebarClick({ text: 'Create Quiz' }) },
+          { icon: <BarChartIcon sx={{color: " rgba(8, 145, 178, 1)"}}/>, text: 'Progress', onClick: () => console.log('Progress Clicked') },
         ]
       }}
-    >  <div className='mt-5'>
-      {showAddCourse && <AddCourse />}
+    >
+      <div className='mt-5'>
+        {activeComponent === 'AddCourse' && <AddCourse />}
+        {activeComponent === 'CreateQuiz' && <CreateQuiz />}
       </div>
     </Sidebar>
   );
 };
 
 export default DashboardPage;
+
