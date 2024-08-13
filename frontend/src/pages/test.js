@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Slider';
 import HomeIcon from '@mui/icons-material/Home';
-import AddBoxIcon from '@mui/icons-material/AddBox'; // Or LibraryAddIcon
-import CreateIcon from '@mui/icons-material/Create'; // Or QuizIcon if available
-import BarChartIcon from '@mui/icons-material/BarChart'; // Or TimelineIcon
+import AddBoxIcon from '@mui/icons-material/AddBox'; 
+import CreateIcon from '@mui/icons-material/Create'; 
+import BarChartIcon from '@mui/icons-material/BarChart'; 
 import myImage from "../assets/smitlogo.png";
 import AddCourse from '../components/AddCourse';
 import CreateQuiz from '../components/CreateQuiz';

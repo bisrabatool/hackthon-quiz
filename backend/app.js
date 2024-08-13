@@ -7,9 +7,8 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const User = require("./userDetails");
 const Enrollment = require("./enrollmentDetails");
-const Course = require("./courseDetails");
+const Quiz = require('./Quiz')
 const nodemailer = require("nodemailer");
-
 const app = express();
 
 app.use(cors());
@@ -113,6 +112,15 @@ app.post("/login", async (req, res) => {
       .json({ status: "error", message: "Internal server error" });
   }
 });
+
+// app.post("/userData", async (req, res)=> {
+//   const {token} = req.body
+//   try {
+    
+//   } catch (error) {
+    
+//   }
+// })
 
 // Forgot Password
 app.post("/forgot-password", async (req, res) => {
@@ -223,12 +231,12 @@ app.post("/enroll", async (req, res) => {
   try {
     const { course, batch, teacher, gender, rollNumber } = req.body;
 
-    const existingStudent = await Enrollment.findOne({ rollNumber });
-    if (existingStudent) {
-      return res
-        .status(400)
-        .json({ status: "error", message: "Roll Number already exists." });
-    }
+    // const existingStudent = await Enrollment.findOne({ rollNumber });
+    // if (existingStudent) {
+    //   return res
+    //     .status(400)
+    //     .json({ status: "error", message: "Roll Number already exists." });
+    // }
 
     const newEnrollment = new Enrollment({
       course,
@@ -250,8 +258,29 @@ app.post("/enroll", async (req, res) => {
       });
   }
 });
+//  create a new quiz
+app.post('/create-quiz', async (req, res) => {
+  try {
+      const quizData = req.body;
+      if (!quizData.course || !quizData.batch || !quizData.teacher || !quizData.courseModule || typeof quizData.timeLimit !== 'number') {
+          return res.status(400).json({ error: "Invalid input data" });
+      }
+      const quiz = new Quiz({
+          course: quizData.course,
+          batch: quizData.batch,
+          teacher: quizData.teacher,
+          courseModule: quizData.courseModule,
+          timeLimit: quizData.timeLimit,
+          questions: quizData.questions, 
+      });
 
-
+      await quiz.save();
+      res.status(201).json({ message: "Quiz created successfully", quiz });
+  } catch (error) {
+      console.error("Error creating quiz:", error);
+      res.status(500).json({ error: "Server error" });
+  }
+});
 
 
 // Start server

@@ -14,6 +14,8 @@ import StdFeedback from "./pages/StdFeedback";
 import CourseCard from "./pages/CourseCard"
 import CourseModule from "./pages/CourseModule"
 import StdProgress from "./pages/StdProgress";
+import StdDashboard from "./pages/StdDashboard"
+
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn")
   return (
@@ -35,6 +37,7 @@ function App() {
         <Route path="/CourseCard" element={<CourseCard/>}></Route>
         <Route path="/CourseModule" element={<CourseModule/>}></Route>
         <Route path="/StdProgress" element={<StdProgress/>}></Route>
+        <Route path="/StdDashboard" element={<StdDashboard/>}></Route>
       </Routes>
     </BrowserRouter>
   );

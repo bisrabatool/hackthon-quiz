@@ -15,11 +15,11 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete'; // Import DeleteIcon
+import DeleteIcon from '@mui/icons-material/Delete'; 
 import { styled } from '@mui/material/styles';
 
 
-// Define styled components
+
 
 const CourseContainer = styled(Box)({
   border: '1px solid #ddd',
