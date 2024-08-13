@@ -159,7 +159,7 @@ const DashboardPage = () => {
                       sx={{
                         width: '15%',
                         // backgroundColor: '#0398dc',
-                        background: 'rgba(8, 145, 178, 1)',
+                        background: 'rgba(0, 172, 193, 0.8)',
                         height: `${progress}%`,
                         borderRadius: 1,
                         display: 'flex',
@@ -179,15 +179,33 @@ const DashboardPage = () => {
             {/* Circular Progress */}
             <Grid item xs={12} md={6} lg={6}>
               <Typography variant="h6">Your Current Progress</Typography>
-              <Paper sx={{ padding: '4', textAlign: 'center', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                <CircularProgress variant="determinate" background="rgba(8, 145, 178, 1)" value={75} size={150} thickness={4} />
+              <Paper
+                sx={{
+                  padding: '4',
+                  textAlign: 'center',
+                  height: '300px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  flexDirection: 'column',
+                }}
+              >
+                <CircularProgress
+                  variant="determinate"
+                  value={75}
+                  size={150}
+                  thickness={4}
+                  sx={{
+                    color: 'rgba(0, 172, 193, 0.8)', // Set the filled color
+                  }}
+                />
                 <Typography variant="h6" sx={{ mt: 4 }}>75%</Typography>
               </Paper>
             </Grid>
           </Grid>
         </Box>
         <FullScreenDialog open={openDialog} onClose={handleCloseDialog} />
-    </div>
+      </div>
     </Sidebar >
 
   );
