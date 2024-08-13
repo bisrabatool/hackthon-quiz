@@ -1,16 +1,97 @@
-import React from 'react';
-import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Paper, Avatar, Divider, CircularProgress } from '@mui/material';
-import { TaskAlt, DonutLarge, ViewModule, Feedback } from '@mui/icons-material';
+import React, { useState } from 'react';
+import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Paper, Avatar, Divider, CircularProgress, Dialog, Card, CardContent, Slide, IconButton } from '@mui/material';
+import { TaskAlt, DonutLarge, ViewModule, Feedback, Close as CloseIcon } from '@mui/icons-material';
 import avatar from '../assets/avatar.jpg'; // Import the image
 import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+function FullScreenDialog({ open, onClose }) {
+  const cardContent = [
+    { title: 'Front-End Development', content: 'Basics of React: components, JSX, state, props. Moreover Advanced React concepts including hooks, context API, routing.' },
+    { title: 'Back-End Development', content: 'Introduction to Node.js and asynchronous, JavaScriptBuilding RESTful APIs with Express.js, Authentication and authorization using JWT (JSON Web Tokens).' },
+    { title: 'Data Management', content: 'Introduction to NoSQL databases and MongoDB, CRUD operations with MongoDB and Mongoose. Moreover ODM Modeling data for efficient querying.' },
+    { title: 'Connecting the Stack', content: 'Integrating React with Node.js and Express, consuming APIs in React and managing state across the application.' },
+    { title: 'Additional Tools and Libraries', content: 'Using Redux or React Context for state management (optional), testing frameworks for both front-end and back-end and continuous integration and deployment (CI/CD) pipelines.' },
+    { title: 'Advanced Topics and Best Practices', content: 'Deployment strategies for MERN applications,security best practices: input validation, XSS, CSRF protection and performance optimization techniques.' },
+  ];
+
+  return (
+    <Dialog
+      fullScreen
+      open={open}
+      onClose={onClose}
+      TransitionComponent={Transition}
+    >
+      <AppBar sx={{ position: 'relative', background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)' }}>
+        <Toolbar>
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={onClose}
+            aria-label="close"
+          >
+            <CloseIcon />
+          </IconButton>
+          <Typography sx={{ ml:'2', flex: 1 }} variant="h6" component="div">
+            Course Module
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Box sx={{ padding: 2 }}>
+        <Typography variant="h4" gutterBottom>
+          Course Module Content
+        </Typography>
+        <Grid container spacing={2}>
+          {cardContent.map((item, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: '100%',
+                  background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
+                  WebkitBackgroundClip: 'border-box',
+                  border: '4px solid transparent',
+                  borderRadius: '6px',
+                }}
+
+              >
+                <Card sx={{ height: '100%', borderRadius: 1 }}>
+                  <CardContent>
+                    <Typography variant="h6">{item.title}</Typography>
+                    <Typography variant="body2">{item.content}</Typography>
+                  </CardContent>
+                </Card>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+    </Dialog>
+  );
+}
+
 function Studentdb() {
   const navigate = useNavigate(); // Initialize the navigate function
+  const [openDialog, setOpenDialog] = useState(false); // State to control the dialog
 
   // Example progress values for 5 quizzes
   const quizProgress = [80, 65, 90, 55, 70];
+
+  const handleCourseModuleClick = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -62,12 +143,10 @@ function Studentdb() {
                 onClick={() => {
                   if (text === 'Feedback') {
                     navigate('/StdFeedback'); // Navigate to the Feedback page
-                  }
-                  else if (text === 'My Progress') {
-                    navigate('/StdProgress'); // Navigate to the Course Module page
-                  }
-                  else if (text === 'Course Module') {
-                    navigate('/CourseModule'); // Navigate to the Course Module page
+                  } else if (text === 'My Progress') {
+                    navigate('/StdProgress'); // Navigate to the Progress page
+                  } else if (text === 'Course Module') {
+                    handleCourseModuleClick(); // Trigger the fullscreen dialog
                   }
                 }}
               >
@@ -110,12 +189,10 @@ function Studentdb() {
                 onClick={() => {
                   if (box === 'FEEDBACK') {
                     navigate('/StdFeedback');
-                  }
-                  else if (box === 'MY PROGRESS') {
+                  } else if (box === 'MY PROGRESS') {
                     navigate('/StdProgress');
-                  }
-                  else if (box === 'COURSE MODULE') {
-                    navigate('/CourseModule');
+                  } else if (box === 'COURSE MODULE') {
+                    handleCourseModuleClick(); // Trigger the fullscreen dialog
                   }
                 }}
               >
@@ -163,8 +240,10 @@ function Studentdb() {
           </Grid>
         </Grid>
       </Box>
+      <FullScreenDialog open={openDialog} onClose={handleCloseDialog} />
     </Box>
   );
 }
 
 export default Studentdb;
+

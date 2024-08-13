@@ -10,12 +10,11 @@ import Test from "./pages/test"
 import QuizForm from "./pages/QuizForm"
 import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
+// import QuizForm from "./pages/QuizForm";
+import QuizComponent from "./components/QuizComponent";
 import StdFeedback from "./pages/StdFeedback";
-import CourseCard from "./pages/CourseCard"
-import CourseModule from "./pages/CourseModule"
+import Forgetpassword from"./pages/forgot-password";
 import StdProgress from "./pages/StdProgress";
-import StdDashboard from "./pages/StdDashboard"
-
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn")
   return (
@@ -34,10 +33,8 @@ function App() {
         <Route path="/Quizform" element={<QuizForm/>}></Route>
         <Route path="/enrollment" element={<Enrollment/>}></Route>  
         <Route path="/stdFeedback" element={<StdFeedback/>}></Route>
-        <Route path="/CourseCard" element={<CourseCard/>}></Route>
-        <Route path="/CourseModule" element={<CourseModule/>}></Route>
+        <Route path="/StdFeedback" element={<StdFeedback/>}></Route>
         <Route path="/StdProgress" element={<StdProgress/>}></Route>
-        <Route path="/StdDashboard" element={<StdDashboard/>}></Route>
       </Routes>
     </BrowserRouter>
   );
