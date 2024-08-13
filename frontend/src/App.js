@@ -1,5 +1,4 @@
 import Dashboard from "./pages/dashboard";
-import Studentdb from "./pages/studentdb";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
@@ -29,7 +28,6 @@ function App() {
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
         <Route path="/test" element={<Test/>}></Route>
-        <Route path="/studentdb" element={<Studentdb/>}></Route>
         <Route path="/Quizform" element={<QuizForm/>}></Route>
         <Route path="/enrollment" element={<Enrollment/>}></Route>  
         <Route path="/stdFeedback" element={<StdFeedback/>}></Route>
