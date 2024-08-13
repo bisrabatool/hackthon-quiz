@@ -10,21 +10,12 @@ import Test from "./pages/test"
 import QuizForm from "./pages/QuizForm"
 import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
-<<<<<<< HEAD
 // import QuizForm from "./pages/QuizForm";
 import QuizComponent from "./components/QuizComponent";
-import CourseModule from "./pages/CourseModule";
 import StdFeedback from "./pages/StdFeedback";
 import Forgetpassword from"./pages/forgot-password";
 import StdProgress from "./pages/StdProgress";
 
-
-=======
-import StdFeedback from "./pages/StdFeedback";
-import CourseCard from "./pages/CourseCard"
-import CourseModule from "./pages/CourseModule"
-import StdProgress from "./pages/StdProgress";
->>>>>>> 4f8d5d003b5780da07cfcaff6a31b8ac06b79f5c
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn")
   return (
@@ -43,16 +34,9 @@ function App() {
         <Route path="/Quizform" element={<QuizForm/>}></Route>
         <Route path="/enrollment" element={<Enrollment/>}></Route>  
         <Route path="/stdFeedback" element={<StdFeedback/>}></Route>
-        <Route path="/CourseCard" element={<CourseCard/>}></Route>
-        <Route path="/CourseModule" element={<CourseModule/>}></Route>
-<<<<<<< HEAD
         <Route path="/StdFeedback" element={<StdFeedback/>}></Route>
         <Route path="/StdProgress" element={<StdProgress/>}></Route>
 
-
-=======
-        <Route path="/StdProgress" element={<StdProgress/>}></Route>
->>>>>>> 4f8d5d003b5780da07cfcaff6a31b8ac06b79f5c
       </Routes>
     </BrowserRouter>
   );
