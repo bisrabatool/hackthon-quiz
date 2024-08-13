@@ -27,7 +27,7 @@ function FullScreenDialog({ open, onClose }) {
       onClose={onClose}
       TransitionComponent={Transition}
     >
-      <AppBar sx={{ position: 'relative', background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)' }}>
+      <AppBar sx={{ position: 'relative', background: 'linear-gradient(to right, rgba(0, 172, 193, 0.8), rgba(67, 160, 71, 0.8))'}}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -55,7 +55,7 @@ function FullScreenDialog({ open, onClose }) {
                   justifyContent: 'center',
                   alignItems: 'center',
                   height: '100%',
-                  background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
+                  background: 'linear-gradient(to right, rgba(0, 172, 193, 0.8), rgba(67, 160, 71, 0.8))',
                   WebkitBackgroundClip: 'border-box',
                   border: '4px solid transparent',
                   borderRadius: '6px',
@@ -99,7 +99,7 @@ function Studentdb() {
         position="fixed"
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
-          background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
+          background: 'linear-gradient(to right, rgba(0, 172, 193, 0.8), rgba(67, 160, 71, 0.8))',
         }}
       >
         <Toolbar>
@@ -132,7 +132,7 @@ function Studentdb() {
                 key={text}
                 sx={{
                   '&:hover': {
-                    background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
+                    background: 'linear-gradient(to right, rgba(0, 172, 193, 0.8), rgba(67, 160, 71, 0.8))',
                     color: 'white',
                     fontSize: '30px',
                     '& .MuiListItemIcon-root': {
@@ -179,7 +179,7 @@ function Studentdb() {
                   textAlign: 'center',
                   color: 'white',
                   fontSize: '20px',
-                  background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
+                  background: 'linear-gradient(to right, rgba(0, 172, 193, 0.8), rgba(67, 160, 71, 0.8))',
                   height: 150, // Set a fixed height to make the boxes more square
                   display: 'flex',
                   alignItems: 'center',
@@ -207,13 +207,14 @@ function Studentdb() {
           <Grid item xs={12} md={6} lg={6}>
             <Typography variant="h6">Your Overall Progress</Typography>
             <Paper sx={{ padding: 3, textAlign: 'center', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end', height: '100%', width: '100%', justifyContent: 'space-around' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end', height: '100%', width: '100%', justifyContent: 'space-around'}}>
                 {quizProgress.map((progress, index) => (
                   <Box
                     key={index}
                     sx={{
                       width: '15%',
-                      backgroundColor: '#0398dc',
+                      // backgroundColor: '#0398dc',
+                      background:'rgba(8, 145, 178, 1)',
                       height: `${progress}%`,
                       borderRadius: 1,
                       display: 'flex',
@@ -234,7 +235,7 @@ function Studentdb() {
           <Grid item xs={12} md={6} lg={6}>
             <Typography variant="h6">Your Current Progress</Typography>
             <Paper sx={{ padding: '4', textAlign: 'center', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-              <CircularProgress variant="determinate" value={75} size={150} thickness={4} />
+              <CircularProgress variant="determinate" background="rgba(8, 145, 178, 1)" value={75} size={150} thickness={4} />
               <Typography variant="h6" sx={{ mt: 4 }}>75%</Typography>
             </Paper>
           </Grid>
@@ -246,4 +247,3 @@ function Studentdb() {
 }
 
 export default Studentdb;
-
