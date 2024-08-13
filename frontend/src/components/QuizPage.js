@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import {
   Container,
   TextField,
@@ -25,12 +26,18 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
-const CreateQuiz = () => {
-  const [questions, setQuestions] = useState([]);
+const CreateQuiz = ({ quizData, onSave }) => {
+  const [questions, setQuestions] = useState(quizData?.questions || []);
+  const [course, setCourse] = useState(quizData?.course || '');
+  const [batch, setBatch] = useState(quizData?.batch || '');
+  const [teacher, setTeacher] = useState(quizData?.teacher || '');
+  const [courseModule, setCourseModule] = useState(quizData?.courseModule || '');
+  const [timeLimit, setTimeLimit] = useState(quizData?.timeLimit || '');
   const [anchorEl, setAnchorEl] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(null);
-  const [timeLimit, setTimeLimit] = useState("");
 
+
+  
   const handleMenuClick = (event, index) => {
     setAnchorEl(event.currentTarget);
     setCurrentQuestionIndex(index);
@@ -120,13 +127,48 @@ const CreateQuiz = () => {
     newQuestions.splice(index, 1);
     setQuestions(newQuestions);
   };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
+    const formData = {
+      course,
+      batch,
+      teacher,
+      courseModule,
+      timeLimit: parseInt(timeLimit, 10),
+      questions: questions.map((q) => ({
+        type: q.type,
+        content: q.content,
+        options: q.options,
+        correctAnswer: q.correctAnswer,
+        points: q.points,
+        image: q.image,
+        video: q.video,
+      })),
+      
+    };
+
+
+   try {
+      const response = await axios.post('http://localhost:5000/create-quiz', formData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      alert('Quiz saved successfully');
+      console.log('Response:', response.data);
+      onSave(response.data);
+    } catch (error) {
+      console.error('Error saving quiz:', error);
+    }
+  };
   return (
     <Container maxWidth="md" sx={{ mt: 4 }}>
       <Paper
         elevation={3}
         sx={{ p: 3, borderRadius: "20px", marginBottom: "30px" }}
       >
+        <form onSubmit={handleSubmit}>
         <Typography
           variant="h4"
           gutterBottom
@@ -148,6 +190,8 @@ const CreateQuiz = () => {
           variant="outlined"
           margin="normal"
           required
+          value={course}
+         onChange={(e) => setCourse(e.target.value)} 
           sx={{
             marginTop: "10px",
             "& .MuiOutlinedInput-root": {
@@ -171,6 +215,7 @@ const CreateQuiz = () => {
               },
             },
           }}
+          
         />
         <TextField
           fullWidth
@@ -178,6 +223,8 @@ const CreateQuiz = () => {
           variant="outlined"
           margin="normal"
           required
+          value={batch}
+          onChange={(e) => setBatch(e.target.value)} 
           sx={{
             marginTop: "10px",
             "& .MuiOutlinedInput-root": {
@@ -208,6 +255,8 @@ const CreateQuiz = () => {
           variant="outlined"
           margin="normal"
           required
+          value={teacher}
+          onChange={(e) => setTeacher(e.target.value)} 
           sx={{
             marginTop: "10px",
             "& .MuiOutlinedInput-root": {
@@ -238,6 +287,8 @@ const CreateQuiz = () => {
           variant="outlined"
           margin="normal"
           required
+          value={courseModule} 
+          onChange={(e) => setCourseModule(e.target.value)} 
           sx={{
             marginTop: "10px",
             "& .MuiOutlinedInput-root": {
@@ -374,6 +425,7 @@ const CreateQuiz = () => {
                       Upload Photo
                       <input
                         type="file"
+                        id={`upload-image-${index}`}
                         hidden
                         accept="image/*"
                         onChange={(e) => handleFileChange(index, e)}
@@ -746,6 +798,7 @@ const CreateQuiz = () => {
           variant="contained"
           color="primary"
           fullWidth
+          type="submit"
           sx={{
             mt: 5,
             background: "linear-gradient(135deg, #0891b2, #16a34a)",
@@ -756,6 +809,7 @@ const CreateQuiz = () => {
         >
           Create Quiz
         </Button>
+        </form>
       </Paper>
     </Container>
   );
