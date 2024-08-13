@@ -42,7 +42,7 @@ function FullScreenDialog({ open, onClose }) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box sx={{ padding: 2 }}>
+      <Box sx={{ padding: 2, color: 'rgba(8, 145, 178, 1)', fontFamily: 'Pacifico', fontSize:'50px', fontWeight: '400', fontStyle: 'normal'}} className="pacifico-regular">
         <Typography variant="h4" gutterBottom>
           Course Module Content
         </Typography>
