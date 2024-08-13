@@ -109,7 +109,7 @@ const DashboardPage = () => {
       <div className=''>
         <Box
           component="main"
-          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, height: 800, width: 800 }}
+          sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
         >
           <Toolbar />
           <Typography paragraph>
