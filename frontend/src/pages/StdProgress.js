@@ -1,16 +1,18 @@
 import React from 'react';
-import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Paper, Avatar, Divider, CircularProgress } from '@mui/material';
-import { TaskAlt, DonutLarge, ViewModule, Feedback } from '@mui/icons-material';
-import avatar from '../assets/avatar.jpg'; // Import the image
-import { useNavigate } from 'react-router-dom';
-
-const drawerWidth = 240;
+import { Box, CssBaseline, AppBar, Toolbar, Typography, Grid, Paper, CircularProgress, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 
 function StdProgress() {
     const navigate = useNavigate(); // Initialize the navigate function
 
     // Example progress values for 5 quizzes
     const quizProgress = [80, 65, 90, 55, 70];
+
+    const handleGoBack = () => {
+        navigate(-1); // Navigate to the previous page
+    };
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -22,64 +24,20 @@ function StdProgress() {
                 }}
             >
                 <Toolbar>
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        onClick={handleGoBack}
+                        aria-label="back"
+                        sx={{ mr: 2 }}
+                    >
+                        <ArrowBackIcon />
+                    </IconButton>
                     <Typography variant="h6" noWrap component="div">
                         Your Progress
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer
-                variant="permanent"
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-                }}
-            >
-                <Toolbar />
-                <Box sx={{ overflow: 'auto', padding: 2, display: 'flex', alignItems: 'center' }}>
-                    <Avatar src={avatar} sx={{ width: 50, height: 50, margin: '2' }}></Avatar>
-                    <Typography variant="h5">
-                        Noor Jehan
-                    </Typography>
-                </Box>
-                <Divider />
-                <Box sx={{ overflow: 'auto' }}>
-                    <List>
-                        {['Quiz', 'My Progress', 'Course Module', 'Feedback'].map((text, index) => (
-                            <ListItem
-                                button
-                                key={text}
-                                sx={{
-                                    '&:hover': {
-                                        background: 'linear-gradient(45deg, #0398dc 30%, #1fb472 90%)',
-                                        color: 'white',
-                                        fontSize: '30px',
-                                        '& .MuiListItemIcon-root': {
-                                            color: 'white',
-                                        },
-                                    },
-                                }}
-                                onClick={() => {
-                                    if (text === 'Feedback') {
-                                        navigate('/StdFeedback'); // Navigate to the Feedback page
-                                    }
-                                    else if (text === 'Course Module') {
-                                        navigate('/CourseModule'); // Navigate to the Course Module page
-                                    }
-                                }}
-                            >
-                                <ListItemIcon>
-                                    {index === 0 && <TaskAlt />}
-                                    {index === 1 && <DonutLarge />}
-                                    {index === 2 && <ViewModule />}
-                                    {index === 3 && <Feedback />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </Box>
-            </Drawer>
             <Box
                 component="main"
                 sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, height: 800, width: 800 }}
@@ -128,4 +86,3 @@ function StdProgress() {
 }
 
 export default StdProgress;
-
