@@ -10,11 +10,12 @@ import Test from "./pages/test"
 import QuizForm from "./pages/QuizForm"
 import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
-import QuizForm from "./pages/QuizForm";
+// import QuizForm from "./pages/QuizForm";
 import QuizComponent from "./components/QuizComponent";
 import CourseModule from "./pages/CourseModule";
 import StdFeedback from "./pages/StdFeedback";
 import Forgetpassword from"./pages/forgot-password";
+import StdProgress from "./pages/StdProgress";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
         <Route path="/studentdb" element={<Studentdb/>}></Route>
         <Route path="/CourseModule" element={<CourseModule/>}></Route>
         <Route path="/StdFeedback" element={<StdFeedback/>}></Route>
+        <Route path="/StdProgress" element={<StdProgress/>}></Route>
 
 
       </Routes>
