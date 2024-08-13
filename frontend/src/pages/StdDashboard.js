@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Slider';
-import { Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon, ListItemText, Grid, Paper, Avatar, Divider, CircularProgress, Dialog, Card, CardContent, Slide, IconButton } from '@mui/material';
-// import HomeIcon from '@mui/icons-material/Home';
-// import AddBoxIcon from '@mui/icons-material/AddBox';
-// import CreateIcon from '@mui/icons-material/Create';
-// import BarChartIcon from '@mui/icons-material/BarChart';
+import { Box, AppBar, Toolbar, Typography, Grid, Paper, CircularProgress, Dialog, Card, CardContent, Slide, IconButton } from '@mui/material';
 import { TaskAlt, DonutLarge, ViewModule, Feedback, Close as CloseIcon } from '@mui/icons-material';
 import myImage from "../assets/smitlogo.png";
 import { useNavigate } from 'react-router-dom';
 
-const drawerWidth = 240;
+// const drawerWidth = 240;
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -104,9 +100,9 @@ const DashboardPage = () => {
       menuItems={{
         main: [
           { icon: <TaskAlt sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Quiz', onClick: () => console.log() },
-          { icon: <DonutLarge sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'My Progress', onClick: () => console.log("Progress Clicked") },
-          { icon: <ViewModule sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Course Module', onClick: () => console.log("") },
-          { icon: <Feedback sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Feedback', onClick: () => console.log('Progress Clicked') },
+          { icon: <DonutLarge sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'My Progress', onClick: () => navigate('/StdProgress') },
+          { icon: <ViewModule sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Course Module', onClick: () => handleCourseModuleClick() },
+          { icon: <Feedback sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Feedback', onClick: () => navigate('/StdFeedback') },
         ]
       }}
     >
