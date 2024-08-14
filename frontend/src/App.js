@@ -1,5 +1,4 @@
 import Dashboard from "./pages/dashboard";
-import Studentdb from "./pages/studentdb";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/register";
 import Login from "./pages/login";
@@ -7,12 +6,11 @@ import Home from "./pages/home"
 import Feedback from "./pages/feedback"
 import StudentInfoPage from "./pages/studentinfo";
 import Test from "./pages/test"
-import QuizForm from "./pages/QuizForm"
 import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
 import StdFeedback from "./pages/StdFeedback";
 import StdProgress from "./pages/StdProgress";
- import StdDashboard from "./pages/StdDashboard"
+// import StdDashboard from "./pages/StdDashboard"
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn")
@@ -28,13 +26,11 @@ function App() {
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
         <Route path="/test" element={<Test/>}></Route>
-        <Route path="/studentdb" element={<Studentdb/>}></Route>
-        <Route path="/Quizform" element={<QuizForm/>}></Route>
+        <Route path="/Quize" element={<QuizPage/>}></Route>
         <Route path="/enrollment" element={<Enrollment/>}></Route>  
         <Route path="/stdFeedback" element={<StdFeedback/>}></Route>
-       
         <Route path="/StdProgress" element={<StdProgress/>}></Route>
-        <Route path="/StdDashboard" element={<StdDashboard/>}></Route>
+        <Route path="/StdDashboard" element={<Dashboard/>}></Route>
       </Routes>
     </BrowserRouter>
   );
