@@ -6,12 +6,12 @@ import Home from "./pages/home"
 import Feedback from "./pages/feedback"
 import StudentInfoPage from "./pages/studentinfo";
 import Test from "./pages/test"
-import QuizForm from "./pages/QuizForm"
 import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
 import StdFeedback from "./pages/StdFeedback";
 import StdProgress from "./pages/StdProgress";
 import DashboardPage from "./pages/StdDashboard";
+import QuizPage from "./pages/Quize";
 
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
         <Route path="/test" element={<Test/>}></Route>
-        <Route path="/Quizform" element={<QuizForm/>}></Route>
+        <Route path="/Quize" element={<QuizPage/>}></Route>
         <Route path="/enrollment" element={<Enrollment/>}></Route>  
         <Route path="/stdFeedback" element={<StdFeedback/>}></Route>
         <Route path="/StdProgress" element={<StdProgress/>}></Route>

@@ -3,7 +3,7 @@ import Sidebar from '../components/Slider';
 import { Box, AppBar, Toolbar, Typography, Grid, Paper, CircularProgress, Dialog, Card, CardContent, Slide, IconButton } from '@mui/material';
 import { TaskAlt, DonutLarge, ViewModule, Feedback, Close as CloseIcon } from '@mui/icons-material';
 import myImage from "../assets/smitlogo.png";
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 // const drawerWidth = 240;
 
@@ -99,7 +99,7 @@ const DashboardPage = () => {
       logo={myImage}
       menuItems={{
         main: [
-          { icon: <TaskAlt sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Quiz', onClick: () => console.log() },
+          { icon: <TaskAlt sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Quiz', onClick: () => navigate('/Quize') },
           { icon: <DonutLarge sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'My Progress', onClick: () => navigate('/StdProgress') },
           { icon: <ViewModule sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Course Module', onClick: () => handleCourseModuleClick() },
           { icon: <Feedback sx={{ color: " rgba(8, 145, 178, 1)" }} />, text: 'Feedback', onClick: () => navigate('/StdFeedback') },
@@ -133,13 +133,17 @@ const DashboardPage = () => {
                   }}
                   onClick={() => {
                     if (box === 'FEEDBACK') {
-                      navigate('/StdFeedback');
+                        navigate('/StdFeedback');
                     } else if (box === 'MY PROGRESS') {
-                      navigate('/StdProgress');
+                        navigate('/StdProgress');
+                    } else if (box === 'QUIZ') {
+                        console.log("Quiz clicked!"); // Add this line for debugging
+                        navigate('/Quize');
                     } else if (box === 'COURSE MODULE') {
-                      handleCourseModuleClick(); // Trigger the fullscreen dialog
+                        handleCourseModuleClick();
                     }
-                  }}
+                }}
+                
                 >
                   {box}
                 </Paper>
@@ -212,4 +216,5 @@ const DashboardPage = () => {
 };
 
 export default DashboardPage;
+
 
