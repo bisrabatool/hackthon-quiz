@@ -68,7 +68,7 @@ function Enrollment() {
           rollNumber: "",
         });
 
-        navigate("/studentdb");
+        navigate("/StdDashboard");
       } else {
         alert(`Error: ${response.data.message}`);
       }

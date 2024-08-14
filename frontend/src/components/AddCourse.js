@@ -277,8 +277,10 @@ const CoursesManagement = () => {
                         background: "linear-gradient(135deg, #0891b2, #16a34a)",
                         color: "white",
                         borderColor: "transparent",
-                        fontWeight: "bold",borderRadius: 2, boxShadow: 3,
-                      }} 
+                        fontWeight: "bold",
+                        borderRadius: 2,
+                        boxShadow: 3,
+                      }}
                       startIcon={<AddIcon />}
                       onClick={() => setOpenAddStudentDialog(true)}
                     >
@@ -299,7 +301,9 @@ const CoursesManagement = () => {
                 background: "linear-gradient(135deg, #0891b2, #16a34a)",
                 color: "white",
                 borderColor: "transparent",
-                fontWeight: "bold",borderRadius: 2, boxShadow: 3,
+                fontWeight: "bold",
+                borderRadius: 2,
+                boxShadow: 3,
               }}
               onClick={() => {
                 setCurrentCourse(course);
@@ -317,7 +321,9 @@ const CoursesManagement = () => {
               background: "linear-gradient(135deg, #0891b2, #16a34a)",
               color: "white",
               borderColor: "transparent",
-              fontWeight: "bold",borderRadius: 2, boxShadow: 3,
+              fontWeight: "bold",
+              borderRadius: 2,
+              boxShadow: 3,
             }}
             onClick={() => {
               setCurrentCourse(course);
@@ -355,12 +361,13 @@ const CoursesManagement = () => {
           background: "linear-gradient(135deg, #0891b2, #16a34a)",
           color: "white",
           borderColor: "transparent",
-          fontWeight: "bold",borderRadius: 2, boxShadow: 3,
+          fontWeight: "bold",
+          borderRadius: 2,
+          boxShadow: 3,
         }}
       >
         <AddIcon sx={{ fontWeight: "bold" }} /> Add Course
       </Button>
-      
 
       {courses.map((course, i) => (
         <CourseBox key={i} course={course} />
@@ -405,10 +412,18 @@ const CoursesManagement = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenAddCourseDialog(false)} color="primary" sx={{color: " rgba(8, 145, 178, 1)",}}>
+          <Button
+            onClick={() => setOpenAddCourseDialog(false)}
+            color="primary"
+            sx={{ color: " rgba(8, 145, 178, 1)" }}
+          >
             Cancel
           </Button>
-          <Button onClick={handleAddCourse} color="primary" sx={{color: " rgba(8, 145, 178, 1)",}}>
+          <Button
+            onClick={handleAddCourse}
+            color="primary"
+            sx={{ color: " rgba(8, 145, 178, 1)" }}
+          >
             Add Course
           </Button>
         </DialogActions>
@@ -453,10 +468,18 @@ const CoursesManagement = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenAddBatchDialog(false)} color="primary"sx={{color: " rgba(8, 145, 178, 1)",}}>
+          <Button
+            onClick={() => setOpenAddBatchDialog(false)}
+            color="primary"
+            sx={{ color: " rgba(8, 145, 178, 1)" }}
+          >
             Cancel
           </Button>
-          <Button onClick={handleAddBatch} color="primary"sx={{color: " rgba(8, 145, 178, 1)",}}>
+          <Button
+            onClick={handleAddBatch}
+            color="primary"
+            sx={{ color: " rgba(8, 145, 178, 1)" }}
+          >
             Add Batch
           </Button>
         </DialogActions>
@@ -533,11 +556,16 @@ const CoursesManagement = () => {
         <DialogActions>
           <Button
             onClick={() => setOpenAddStudentDialog(false)}
-            color="primary" sx={{color: " rgba(8, 145, 178, 1)",}}
+            color="primary"
+            sx={{ color: " rgba(8, 145, 178, 1)" }}
           >
             Cancel
           </Button>
-          <Button onClick={handleAddStudent} color="primary" sx={{color: " rgba(8, 145, 178, 1)",}}> 
+          <Button
+            onClick={handleAddStudent}
+            color="primary"
+            sx={{ color: " rgba(8, 145, 178, 1)" }}
+          >
             Add Student
           </Button>
         </DialogActions>
@@ -583,12 +611,17 @@ const CoursesManagement = () => {
         </DialogContent>
         <DialogActions>
           <Button
-            onClick={() => setOpenAddTeacherDialog(false)}sx={{color: " rgba(8, 145, 178, 1)",}}
+            onClick={() => setOpenAddTeacherDialog(false)}
+            sx={{ color: " rgba(8, 145, 178, 1)" }}
             color="primary"
           >
             Cancel
           </Button>
-          <Button onClick={handleAddTeacher} color="primary" sx={{color: " rgba(8, 145, 178, 1)",}}>
+          <Button
+            onClick={handleAddTeacher}
+            color="primary"
+            sx={{ color: " rgba(8, 145, 178, 1)" }}
+          >
             Add Teacher
           </Button>
         </DialogActions>
@@ -674,9 +707,11 @@ const CoursesManagement = () => {
                 background: "linear-gradient(135deg, #0891b2, #16a34a)",
                 color: "white",
                 borderColor: "transparent",
-                fontWeight: "bold",borderRadius: 2, boxShadow: 3,
+                fontWeight: "bold",
+                borderRadius: 2,
+                boxShadow: 3,
               }}
-              startIcon={<AddIcon sx={{ fontWeight: "bold" }}/>}
+              startIcon={<AddIcon sx={{ fontWeight: "bold" }} />}
             >
               Add Student
             </Button>
@@ -689,12 +724,14 @@ const CoursesManagement = () => {
           <Box flex={1}>
             <Button
               variant="outlined"
-              startIcon={<AddIcon sx={{ fontWeight: "bold" }}/>}
+              startIcon={<AddIcon sx={{ fontWeight: "bold" }} />}
               sx={{
                 background: "linear-gradient(135deg, #0891b2, #16a34a)",
                 color: "white",
                 borderColor: "transparent",
-                fontWeight: "bold",borderRadius: 2, boxShadow: 3,
+                fontWeight: "bold",
+                borderRadius: 2,
+                boxShadow: 3,
               }}
             >
               Add Batch
@@ -703,12 +740,14 @@ const CoursesManagement = () => {
           <Box flex={1} />
           <Button
             variant="outlined"
-            startIcon={<AddIcon sx={{ fontWeight: "bold" }}/>}
+            startIcon={<AddIcon sx={{ fontWeight: "bold" }} />}
             sx={{
               background: "linear-gradient(135deg, #0891b2, #16a34a)",
               color: "white",
               borderColor: "transparent",
-              fontWeight: "bold",borderRadius: 2, boxShadow: 3,
+              fontWeight: "bold",
+              borderRadius: 2,
+              boxShadow: 3,
             }}
           >
             Add Teacher
@@ -716,15 +755,6 @@ const CoursesManagement = () => {
         </HorizontalRow>
       </Card>
     </Card>
-
-
-
-
-
-
-
-
-    
   );
 };
 

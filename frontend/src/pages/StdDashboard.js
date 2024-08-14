@@ -155,7 +155,7 @@ const DashboardPage = () => {
             {/* Bar Chart */}
             <Grid item xs={12} md={6} lg={6}>
               <Typography variant="h6">Your Overall Progress</Typography>
-              <Paper sx={{ padding: 3, textAlign: 'center', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Paper sx={{borderRadius: 2, boxShadow: 3, padding: 3, textAlign: 'center', height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-end', height: '100%', width: '100%', justifyContent: 'space-around' }}>
                   {quizProgress.map((progress, index) => (
                     <Box
@@ -192,6 +192,7 @@ const DashboardPage = () => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   flexDirection: 'column',
+                  borderRadius: 2, boxShadow: 3
                 }}
               >
                 <CircularProgress

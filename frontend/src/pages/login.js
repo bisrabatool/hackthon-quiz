@@ -28,7 +28,7 @@ function Login() {
       
         const userType = response.data.data.userType;
         if (userType === "Admin") {
-          navigate("/test");
+          navigate("/AdminDashboard");
         } else if (userType === "User") {
           navigate("/enrollment?showDialog=true");
         }
