@@ -10,7 +10,7 @@ import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
 import StdFeedback from "./pages/StdFeedback";
 import StdProgress from "./pages/StdProgress";
-// import StdDashboard from "./pages/StdDashboard"
+import StdDashboard from "./pages/StdDashboard"
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn")
@@ -26,7 +26,7 @@ function App() {
         <Route path="/feedback" element={<Feedback/>}></Route>
         <Route path="/studentinfo" element={<StudentInfoPage />}></Route>
         <Route path="/test" element={<Test/>}></Route>
-        <Route path="/Quize" element={<QuizPage/>}></Route>
+        <Route path="/Quiz" element={<QuizPage/>}></Route>
         <Route path="/enrollment" element={<Enrollment/>}></Route>  
         <Route path="/stdFeedback" element={<StdFeedback/>}></Route>
         <Route path="/StdProgress" element={<StdProgress/>}></Route>

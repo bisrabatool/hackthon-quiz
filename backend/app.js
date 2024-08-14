@@ -112,16 +112,6 @@ app.post("/login", async (req, res) => {
       .json({ status: "error", message: "Internal server error" });
   }
 });
-
-// app.post("/userData", async (req, res)=> {
-//   const {token} = req.body
-//   try {
-    
-//   } catch (error) {
-    
-//   }
-// })
-
 // Forgot Password
 app.post("/forgot-password", async (req, res) => {
   const { email } = req.body;
@@ -230,14 +220,6 @@ app.post("/reset-password/:id/:token", async (req, res) => {
 app.post("/enroll", async (req, res) => {
   try {
     const { course, batch, teacher, gender, rollNumber } = req.body;
-
-    // const existingStudent = await Enrollment.findOne({ rollNumber });
-    // if (existingStudent) {
-    //   return res
-    //     .status(400)
-    //     .json({ status: "error", message: "Roll Number already exists." });
-    // }
-
     const newEnrollment = new Enrollment({
       course,
       batch,
