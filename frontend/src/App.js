@@ -11,9 +11,8 @@ import QuizForm from "./pages/QuizForm"
 import Forgotpassword from "./pages/forgot-password";
 import Enrollment from "./pages/enrollment"
 import StdFeedback from "./pages/StdFeedback";
-
 import StdProgress from "./pages/StdProgress";
-// import StdDashboard from "./pages/StdDashboard"
+ import StdDashboard from "./pages/StdDashboard"
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("loggedIn")
@@ -35,7 +34,7 @@ function App() {
         <Route path="/stdFeedback" element={<StdFeedback/>}></Route>
        
         <Route path="/StdProgress" element={<StdProgress/>}></Route>
-        <Route path="/StdDashboard" element={<Dashboard/>}></Route>
+        <Route path="/StdDashboard" element={<StdDashboard/>}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -10,6 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import QuizPage from "./QuizPage";
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
 import AddIcon from '@mui/icons-material/Add';
 
 
@@ -51,11 +52,11 @@ export default function FullScreenDialog() {
  
   return (
     <React.Fragment>
-      <Box sx={{padding:"30px" , }}>
+      <Card sx={{padding:"30px" , height:"567px"}}>
+        
       <Typography
           variant="h4"
           gutterBottom
-   
           sx={{
             color: " rgba(8, 145, 178, 1)",
             fontSize: "50px",
@@ -63,13 +64,12 @@ export default function FullScreenDialog() {
             fontWeight: "400",
             fontStyle: "normal",
           }}
-          className="pacifico-regular"
         >
          Add Quiz
         </Typography>
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2  }}>
-        {quizzes.map((quiz, index) => (
-          <Box key={index} sx={{
+      <Box 
+          sx={{
             
             width: 200, 
             height: 200, 
@@ -78,12 +78,35 @@ export default function FullScreenDialog() {
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center',
-            borderRadius: 4,
+            borderRadius: 2,
+            boxShadow: 3,
+            border: '2px solid  lightgray',
+            cursor: 'pointer',
+            marginTop:'10px', marginLeft:'15px'
+          }} onClick={() => handleClickOpen()}>
+            <Typography sx={{fontWeight:"bold", fontSize:"30px" , color: " rgba(8, 145, 178, 1)", fontFamily: "Pacifico",
+            fontWeight: "400",
+            fontStyle: "normal"}}>Quiz 1</Typography>
+          </Box>
+        {quizzes.map((quiz, index) => (
+          <Box key={index}
+          sx={{
+            width: 200, 
+            height: 200, 
+            backgroundColor: 'white', 
+            position: 'relative',
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center',
+            borderRadius: 2,
+            boxShadow: 3,
             border: '2px solid  lightgray',
             cursor: 'pointer',
             marginTop:'10px', marginLeft:'15px'
           }} onClick={() => handleClickOpen(index)}>
-            <Typography sx={{fontWeight:"bold", fontSize:"30px" , color:"gray"}}>{`Quiz ${index + 1}`}</Typography>
+            <Typography sx={{fontWeight:"bold", fontSize:"30px" ,color: " rgba(8, 145, 178, 1)", fontFamily: "Pacifico",
+            fontWeight: "400",
+            fontStyle: "normal"}}>{`Quiz ${index + 2}`}</Typography>
           </Box>
         ))}
         <Box sx={{
@@ -93,7 +116,8 @@ export default function FullScreenDialog() {
           display: 'flex', 
           alignItems: 'center', 
           justifyContent: 'center',
-          borderRadius: 4,
+          borderRadius: 2,
+      
           border: '2px solid rgba(240, 248, 255, 0.952)',
           cursor: 'pointer',
           marginTop:'10px',
@@ -140,7 +164,7 @@ export default function FullScreenDialog() {
           <QuizPage quizData={currentQuizIndex !== null ? quizzes[currentQuizIndex] : null} />
         </List>
       </Dialog>
-      </Box>
+      </Card>
     </React.Fragment>
   );
 }
