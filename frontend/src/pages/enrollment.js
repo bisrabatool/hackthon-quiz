@@ -50,7 +50,7 @@ function Enrollment() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/enroll", {
+      const response = await axios.post("https://hackthon-quiz-kubcu5nuo-bisrabatools-projects.vercel.app//enroll", {
         course,
         batch,
         teacher,

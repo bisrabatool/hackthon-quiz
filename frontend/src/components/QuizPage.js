@@ -150,7 +150,7 @@ const CreateQuiz = ({ quizData, onSave }) => {
 
 
    try {
-      const response = await axios.post('http://localhost:5000/create-quiz', formData, {
+      const response = await axios.post('https://hackthon-quiz-kubcu5nuo-bisrabatools-projects.vercel.app//create-quiz', formData, {
         headers: {
           'Content-Type': 'application/json',
         },

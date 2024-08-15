@@ -11,7 +11,7 @@ function Forgotpassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/forgot-password", {
+      const res = await axios.post("https://hackthon-quiz-kubcu5nuo-bisrabatools-projects.vercel.app//forgot-password", {
         email,
       });
 
