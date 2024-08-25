@@ -26,7 +26,7 @@ function Register() {
     }
 
     try {
-      const response = await axios.post("https://hackthon-quiz-kubcu5nuo-bisrabatools-projects.vercel.app//register", {
+      const response = await axios.post("https://hackthon-quiz-kubcu5nuo-bisrabatools-projects.vercel.app/register", {
         name: username,
         email,
         password,
